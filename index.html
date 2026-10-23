@@ -10,319 +10,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f8fafc;
-    color: #0f172a;
-    line-height: 1.7;
-    padding: 0 1.5rem 2rem;
-    -webkit-font-smoothing: antialiased;
-  }
-
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; padding: 0 1.5rem 2rem; -webkit-font-smoothing: antialiased; }
   body[data-lang="zh"] .lang-en { display: none !important; }
   body[data-lang="en"] .lang-zh { display: none !important; }
-
   .container { max-width: 1000px; margin: 0 auto; }
 
-  /* ===== 顶部导航 ===== */
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    background: rgba(248, 250, 252, 0.88);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e2e8f0;
-    margin: 0 -1.5rem 2rem;
-    padding: 0 1.5rem;
-  }
-  .header-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    height: 64px;
-  }
-  .brand {
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #0f172a;
-    text-decoration: none;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-  .brand .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
-  }
-  .site-nav {
-    display: flex;
-    gap: 0.2rem;
-    margin-left: auto;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
+  .site-header { position: sticky; top: 0; z-index: 200; background: rgba(248, 250, 252, 0.88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; margin: 0 -1.5rem 2rem; padding: 0 1.5rem; }
+  .header-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 0.75rem; height: 64px; }
+  .brand { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+  .site-nav { display: flex; gap: 0.2rem; margin-left: auto; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
   .site-nav::-webkit-scrollbar { display: none; }
-  .site-nav a {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #475569;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 10px;
-    white-space: nowrap;
-    transition: background 0.15s ease, color 0.15s ease;
-  }
+  .site-nav a { font-size: 0.9rem; font-weight: 500; color: #475569; text-decoration: none; padding: 8px 12px; border-radius: 10px; white-space: nowrap; transition: background 0.15s ease, color 0.15s ease; }
   .site-nav a:hover { background: #e2e8f0; color: #0f172a; }
   .site-nav a.active { background: #3b82f6; color: #ffffff; }
-
-  #langBtn {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    border: 2px solid #3b82f6;
-    background: #ffffff;
-    color: #3b82f6;
-    font-size: 18px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; padding: 0;
-    flex-shrink: 0;
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.18), 0 1px 3px rgba(0, 0, 0, 0.06);
-    -webkit-tap-highlight-color: transparent;
-    transition: transform .12s ease, box-shadow .15s ease;
-    font-family: inherit;
-    margin-left: 0.5rem;
-  }
+  #langBtn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #3b82f6; background: #ffffff; color: #3b82f6; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; flex-shrink: 0; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.18), 0 1px 3px rgba(0, 0, 0, 0.06); -webkit-tap-highlight-color: transparent; transition: transform .12s ease, box-shadow .15s ease; font-family: inherit; margin-left: 0.5rem; }
   #langBtn:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.32); }
   #langBtn:active { transform: scale(.92); }
 
-  /* ===== 视图切换 ===== */
   .view { display: none; }
   .view.active { display: block; animation: viewIn 0.28s ease; }
-  @keyframes viewIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: none; }
-  }
+  @keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-  /* ===== 首页头部 ===== */
-  .blog-header {
-    margin-bottom: 3rem;
-    text-align: center;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 2rem;
-  }
-  .blog-header h1 {
-    font-size: 2.4rem; font-weight: 600;
-    letter-spacing: -0.025em; color: #0f172a; margin-bottom: 0.6rem;
-    line-height: 1.25;
-  }
-  .blog-header .subhead {
-    font-size: 1.05rem; color: #475569;
-    max-width: 600px; margin: 0 auto;
-  }
+  .blog-header { margin-bottom: 3rem; text-align: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 2rem; }
+  .blog-header h1 { font-size: 2.4rem; font-weight: 600; letter-spacing: -0.025em; color: #0f172a; margin-bottom: 0.6rem; line-height: 1.25; }
+  .blog-header .subhead { font-size: 1.05rem; color: #475569; max-width: 600px; margin: 0 auto; }
 
-  .section-title {
-    display: flex; align-items: center; gap: 0.75rem;
-    font-size: 1.4rem; font-weight: 600;
-    margin-bottom: 1.4rem; color: #1e293b;
-    flex-wrap: wrap;
-  }
-  .section-title span.count {
-    background: #e2e8f0; border-radius: 40px;
-    padding: 0.2rem 0.9rem; font-size: 0.8rem;
-    font-weight: 500; color: #334155;
-  }
+  .section-title { display: flex; align-items: center; gap: 0.75rem; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.4rem; color: #1e293b; flex-wrap: wrap; }
+  .section-title span.count { background: #e2e8f0; border-radius: 40px; padding: 0.2rem 0.9rem; font-size: 0.8rem; font-weight: 500; color: #334155; }
 
-  /* ===== 作品卡片 ===== */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.6rem; margin-bottom: 3rem;
-  }
-  .card {
-    background: #ffffff; border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.05);
-    padding: 1.6rem 1.5rem 1.8rem;
-    transition: all 0.2s ease;
-    border: 1px solid #f1f5f9;
-    display: flex; flex-direction: column;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-  }
-  .card:hover, .card:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-    border-color: #cbd5e1;
-  }
-  .card:focus-visible {
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.35), 0 20px 25px -5px rgba(0,0,0,0.05);
-  }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.6rem; margin-bottom: 3rem; }
+  .card { background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.05); padding: 1.6rem 1.5rem 1.8rem; transition: all 0.2s ease; border: 1px solid #f1f5f9; display: flex; flex-direction: column; position: relative; cursor: pointer; outline: none; }
+  .card:hover, .card:focus-visible { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02); border-color: #cbd5e1; }
+  .card:focus-visible { box-shadow: 0 0 0 3px rgba(59,130,246,0.35), 0 20px 25px -5px rgba(0,0,0,0.05); }
   .card:active { transform: translateY(-1px); }
   .card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: #0f172a; }
   .card p { font-size: 0.92rem; color: #475569; margin-bottom: 1.4rem; flex: 1; }
-  .card .visit-hint {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-weight: 500; font-size: 0.92rem;
-    color: #3b82f6;
-    transition: gap 0.15s ease;
-    width: fit-content;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-  }
+  .card .visit-hint { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; font-size: 0.92rem; color: #3b82f6; transition: gap 0.15s ease; width: fit-content; padding-bottom: 2px; border-bottom: 1px solid transparent; }
   .card:hover .visit-hint { gap: 8px; border-bottom-color: #3b82f6; }
-
-  .card .apk-alt {
-    display: inline-flex; align-items: center; gap: 4px;
-    margin-top: 0.65rem;
-    font-size: 0.78rem;
-    font-weight: 400;
-    color: #94a3b8;
-    text-decoration: none;
-    padding-bottom: 1px;
-    border-bottom: 1px dashed #cbd5e1;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    width: fit-content;
-    position: relative;
-    z-index: 2;
-    cursor: pointer;
-  }
+  .card .apk-alt { display: inline-flex; align-items: center; gap: 4px; margin-top: 0.65rem; font-size: 0.78rem; font-weight: 400; color: #94a3b8; text-decoration: none; padding-bottom: 1px; border-bottom: 1px dashed #cbd5e1; transition: color 0.15s ease, border-color 0.15s ease; width: fit-content; position: relative; z-index: 2; cursor: pointer; }
   .card .apk-alt:hover { color: #64748b; border-bottom-color: #94a3b8; }
+  .card .badge { position: absolute; top: 14px; right: 16px; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #fef3c7; color: #b45309; letter-spacing: 0.3px; }
 
-  .card .badge {
-    position: absolute;
-    top: 14px; right: 16px;
-    font-size: 11px; font-weight: 600;
-    padding: 3px 10px; border-radius: 999px;
-    background: #fef3c7; color: #b45309;
-    letter-spacing: 0.3px;
-  }
-
-  /* ===== 广告位占位 ===== */
-  .ad-slot {
-    margin: 2rem 0;
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.78rem;
-    color: #cbd5e1;
-    border: 1px dashed #e2e8f0;
-    border-radius: 12px;
-    min-height: 20px;
-  }
-
-  /* ===== 博客列表 ===== */
   .page-head { margin-bottom: 2rem; }
-  .page-head h1 {
-    font-size: 1.9rem; font-weight: 700;
-    letter-spacing: -0.02em; margin-bottom: 0.4rem;
-  }
+  .page-head h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
   .page-head p { color: #475569; font-size: 1rem; max-width: 680px; }
-
   .post-list { display: grid; gap: 1rem; }
-  .post-item {
-    display: block;
-    background: #ffffff;
-    border: 1px solid #f1f5f9;
-    border-radius: 16px;
-    padding: 1.25rem 1.4rem;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s ease;
-  }
-  .post-item:hover {
-    border-color: #cbd5e1;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px -10px rgba(0,0,0,0.10);
-  }
+  .post-item { display: block; background: #ffffff; border: 1px solid #f1f5f9; border-radius: 16px; padding: 1.25rem 1.4rem; text-decoration: none; color: inherit; transition: all 0.2s ease; }
+  .post-item:hover { border-color: #cbd5e1; transform: translateY(-2px); box-shadow: 0 12px 24px -10px rgba(0,0,0,0.10); }
   .post-item h3 { font-size: 1.08rem; font-weight: 600; margin-bottom: 0.35rem; color: #0f172a; }
   .post-item .meta { font-size: 0.78rem; color: #94a3b8; margin-bottom: 0.5rem; letter-spacing: 0.01em; }
   .post-item p { font-size: 0.9rem; color: #475569; margin: 0; }
 
-  /* ===== 文章正文 ===== */
   .article { max-width: 720px; margin: 0 auto; }
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: #3b82f6;
-    text-decoration: none;
-    margin-bottom: 1.6rem;
-  }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.88rem; font-weight: 500; color: #3b82f6; text-decoration: none; margin-bottom: 1.6rem; }
   .back-link:hover { text-decoration: underline; }
-  .article h1 {
-    font-size: 1.85rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.32;
-    margin-bottom: 0.7rem;
-    color: #0f172a;
-  }
-  .article .article-meta {
-    font-size: 0.82rem;
-    color: #94a3b8;
-    padding-bottom: 1.4rem;
-    margin-bottom: 1.6rem;
-    border-bottom: 1px solid #e2e8f0;
-  }
-  .article h2 {
-    font-size: 1.22rem;
-    font-weight: 600;
-    margin: 2rem 0 0.7rem;
-    color: #0f172a;
-    letter-spacing: -0.01em;
-  }
+  .article h1 { font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.32; margin-bottom: 0.7rem; color: #0f172a; }
+  .article .article-meta { font-size: 0.82rem; color: #94a3b8; padding-bottom: 1.4rem; margin-bottom: 1.6rem; border-bottom: 1px solid #e2e8f0; }
+  .article h2 { font-size: 1.22rem; font-weight: 600; margin: 2rem 0 0.7rem; color: #0f172a; letter-spacing: -0.01em; }
   .article p { margin-bottom: 1rem; color: #334155; font-size: 0.98rem; }
   .article ul, .article ol { margin: 0 0 1rem 1.3rem; }
   .article li { margin-bottom: 0.5rem; color: #334155; font-size: 0.98rem; }
-  .article code {
-    background: #eef2f7;
-    padding: 2px 6px;
-    border-radius: 6px;
-    font-size: 0.86em;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    color: #1e40af;
-  }
-  .article pre {
-    background: #0f172a;
-    color: #e2e8f0;
-    padding: 1rem 1.1rem;
-    border-radius: 14px;
-    overflow-x: auto;
-    margin-bottom: 1.2rem;
-    font-size: 0.84rem;
-    line-height: 1.65;
-  }
-  .article pre code {
-    background: none; color: inherit; padding: 0; font-size: inherit;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  }
+  .article code { background: #eef2f7; padding: 2px 6px; border-radius: 6px; font-size: 0.86em; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #1e40af; }
+  .article pre { background: #0f172a; color: #e2e8f0; padding: 1rem 1.1rem; border-radius: 14px; overflow-x: auto; margin-bottom: 1.2rem; font-size: 0.84rem; line-height: 1.65; }
+  .article pre code { background: none; color: inherit; padding: 0; font-size: inherit; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
   .article strong { color: #0f172a; font-weight: 600; }
 
-  /* ===== 关于 / 联系 / 隐私 通用版式 ===== */
-  .content-card {
-    background: #ffffff;
-    border: 1px solid #f1f5f9;
-    border-radius: 20px;
-    padding: 2rem 2rem 1.8rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    max-width: 780px;
-    margin: 0 auto;
-  }
-  .content-card h2 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin: 1.8rem 0 0.6rem;
-  }
+  .content-card { background: #ffffff; border: 1px solid #f1f5f9; border-radius: 20px; padding: 2rem 2rem 1.8rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02); max-width: 780px; margin: 0 auto; }
+  .content-card h2 { font-size: 1.15rem; font-weight: 600; color: #0f172a; margin: 1.8rem 0 0.6rem; }
   .content-card h2:first-of-type { margin-top: 0; }
   .content-card p { color: #334155; font-size: 0.96rem; margin-bottom: 0.85rem; }
   .content-card ul, .content-card ol { margin: 0 0 1rem 1.3rem; }
@@ -330,18 +85,8 @@
   .content-card a { color: #3b82f6; text-decoration: none; }
   .content-card a:hover { text-decoration: underline; }
 
-  /* ===== 联系方式 ===== */
-  .contact-links {
-    display: flex; flex-wrap: wrap;
-    gap: 1rem 2rem; align-items: center;
-    margin-bottom: 1.6rem;
-  }
-  .contact-item {
-    display: flex; align-items: center; gap: 12px;
-    text-decoration: none; color: #1e293b;
-    font-weight: 500; padding: 0.5rem 0.2rem;
-    transition: color 0.15s ease;
-  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin-bottom: 1.6rem; }
+  .contact-item { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1e293b; font-weight: 500; padding: 0.5rem 0.2rem; transition: color 0.15s ease; }
   .contact-item:hover { color: #3b82f6; }
   .contact-item .emoji { font-size: 1.4rem; line-height: 1; }
   .contact-item .label { font-size: 0.9rem; color: #64748b; font-weight: 400; }
@@ -349,183 +94,48 @@
   .contact-item:hover .value { color: #3b82f6; }
 
   .contact-form { display: grid; gap: 0.85rem; margin-top: 0.5rem; }
-  .contact-form label {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #334155;
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    font-family: inherit;
-    font-size: 0.94rem;
-    color: #0f172a;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 11px 14px;
-    outline: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
-    background: #ffffff;
-  }
+  .contact-form label { font-size: 0.85rem; font-weight: 500; color: #334155; display: block; margin-bottom: 0.3rem; }
+  .contact-form input, .contact-form textarea { width: 100%; font-family: inherit; font-size: 0.94rem; color: #0f172a; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 11px 14px; outline: none; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); background: #ffffff; }
   .contact-form textarea { min-height: 120px; resize: vertical; }
-  .contact-form button {
-    justify-self: start;
-    font-family: inherit;
-    font-size: 0.94rem;
-    font-weight: 600;
-    color: #ffffff;
-    background: #3b82f6;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 26px;
-    cursor: pointer;
-    transition: background 0.15s ease, transform 0.1s ease;
-  }
+  .contact-form button { justify-self: start; font-family: inherit; font-size: 0.94rem; font-weight: 600; color: #ffffff; background: #3b82f6; border: none; border-radius: 12px; padding: 12px 26px; cursor: pointer; transition: background 0.15s ease, transform 0.1s ease; }
   .contact-form button:hover { background: #2563eb; }
   .contact-form button:active { transform: scale(0.98); }
 
-  /* ===== 版权声明区 ===== */
-  .legal-section {
-    max-width: 900px; margin: 0 auto;
-    padding: 32px 28px;
-    background: #ffffff; border-radius: 24px;
-    border: 1px solid #f1f5f9;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    line-height: 1.75; color: #334155;
-  }
-  .legal-section h2 {
-    font-size: 1.3rem; font-weight: 600;
-    color: #0f172a; margin-bottom: 1.4rem;
-    padding-bottom: 0.75rem; border-bottom: 1px solid #e2e8f0;
-  }
+  .legal-section { max-width: 900px; margin: 0 auto; padding: 32px 28px; background: #ffffff; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02); line-height: 1.75; color: #334155; }
+  .legal-section h2 { font-size: 1.3rem; font-weight: 600; color: #0f172a; margin-bottom: 1.4rem; padding-bottom: 0.75rem; border-bottom: 1px solid #e2e8f0; }
   .legal-section p { font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem; }
 
-  /* ===== 页脚 ===== */
-  .site-footer {
-    margin-top: 4rem;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 2rem;
-    text-align: center;
-  }
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .footer-links a {
-    font-size: 0.88rem;
-    color: #64748b;
-    text-decoration: none;
-    font-weight: 500;
-  }
+  .site-footer { margin-top: 4rem; border-top: 1px solid #e2e8f0; padding-top: 2rem; text-align: center; }
+  .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 1rem; }
+  .footer-links a { font-size: 0.88rem; color: #64748b; text-decoration: none; font-weight: 500; }
   .footer-links a:hover { color: #3b82f6; }
-  .footer-note {
-    font-size: 0.85rem; color: #94a3b8;
-    margin-bottom: 0.6rem;
-  }
-  .footer-tiny {
-    font-size: 13px;
-    color: #94a3b8;
-    padding-bottom: 8px;
-  }
+  .footer-note { font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.6rem; }
+  .footer-tiny { font-size: 13px; color: #94a3b8; padding-bottom: 8px; }
 
-  /* ===== APK 弹窗 ===== */
-  .apk-modal-mask {
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.45);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 20px;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-  }
+  .apk-modal-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
   .apk-modal-mask.show { display: flex; }
-
-  .apk-modal {
-    background: #fff;
-    border-radius: 20px;
-    padding: 26px 24px 22px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-    text-align: center;
-    animation: apkModalIn 0.2s ease;
-  }
-  @keyframes apkModalIn {
-    from { transform: scale(0.94); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
+  .apk-modal { background: #fff; border-radius: 20px; padding: 26px 24px 22px; max-width: 400px; width: 100%; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18); text-align: center; animation: apkModalIn 0.2s ease; }
+  @keyframes apkModalIn { from { transform: scale(0.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   .apk-modal h3 { font-size: 1.15rem; font-weight: 600; color: #0f172a; margin-bottom: 10px; }
   .apk-modal p { font-size: 0.9rem; color: #64748b; line-height: 1.6; margin-bottom: 22px; }
   .apk-modal-btns { display: flex; gap: 10px; }
-  .apk-modal-btns button {
-    flex: 1;
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    border: none;
-    transition: background 0.15s ease, transform 0.1s ease;
-  }
+  .apk-modal-btns button { flex: 1; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; font-weight: 600; font-family: inherit; cursor: pointer; border: none; transition: background 0.15s ease, transform 0.1s ease; }
   .apk-modal-btns button:active { transform: scale(0.97); }
   .apk-cancel { background: #f1f5f9; color: #475569; }
   .apk-cancel:hover { background: #e2e8f0; }
   .apk-confirm { background: #3b82f6; color: #fff; }
   .apk-confirm:hover { background: #2563eb; }
 
-  /* ============================================================
-     移动端：导航换行全显，不再横向滚动
-     ============================================================ */
   @media (max-width: 720px) {
     body { padding: 0 1rem 2rem; }
-
     .site-header { margin: 0 -1rem 1.5rem; padding: 0 1rem; }
-
-    .header-inner {
-      height: auto;
-      flex-wrap: wrap;
-      padding: 10px 0 8px;
-      gap: 0.3rem;
-    }
-
+    .header-inner { height: auto; flex-wrap: wrap; padding: 10px 0 8px; gap: 0.3rem; }
     .brand { font-size: 0.96rem; }
     .brand .dot { display: none; }
-
-    .site-nav {
-      order: 3;
-      width: 100%;
-      margin-left: 0;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.15rem;
-      overflow-x: visible;
-    }
-    .site-nav a {
-      font-size: 0.82rem;
-      padding: 6px 10px;
-      border-radius: 8px;
-    }
-
-    #langBtn {
-      width: 36px; height: 36px; font-size: 16px;
-      margin-left: auto;
-    }
-
+    .site-nav { order: 3; width: 100%; margin-left: 0; justify-content: center; flex-wrap: wrap; gap: 0.15rem; overflow-x: visible; }
+    .site-nav a { font-size: 0.82rem; padding: 6px 10px; border-radius: 8px; }
+    #langBtn { width: 36px; height: 36px; font-size: 16px; margin-left: auto; }
     .blog-header h1 { font-size: 1.75rem; }
     .blog-header .subhead { font-size: 0.96rem; }
     .projects-grid { grid-template-columns: 1fr; gap: 1.1rem; }
@@ -559,17 +169,13 @@
 
 <div class="container">
 
-  <!-- ============================================================ -->
-  <!-- 首页 -->
-  <!-- ============================================================ -->
   <section class="view active" id="view-home">
-
     <header class="blog-header">
       <h1 data-zh="臭鸡条官方网站（国际站）" data-en="Chou Ji Tiao Official Website (International)">臭鸡条官方网站（国际站）</h1>
       <p class="subhead" data-zh="全家桶工作室的网页小游戏作品集与开发日志。这里收集我们用纯 HTML5 / CSS / JavaScript 做的小游戏，也记录开发过程中的思考与踩坑。" data-en="The game portfolio and dev blog of Bucket Family Studio — HTML5 / CSS / JavaScript mini-games we built from scratch, plus notes on what we learned along the way.">全家桶工作室的网页小游戏作品集与开发日志。这里收集我们用纯 HTML5 / CSS / JavaScript 做的小游戏，也记录开发过程中的思考与踩坑。</p>
     </header>
 
-    <!-- AdSense 广告位：审核通过后可在此处插入 <ins class="adsbygoogle"> 代码 -->
+    <!-- AdSense 广告位 -->
 
     <section>
       <div class="section-title">
@@ -578,52 +184,47 @@
       </div>
       <div class="projects-grid">
 
-        <!-- 作品卡片 1 -->
         <div class="card" data-href="https://eggy-duckie-balloon.pages.dev" tabindex="0" role="link">
           <h3 data-zh="蛋仔鸭鸭气球" data-en="Eggy Duckie Balloon">蛋仔鸭鸭气球</h3>
-          <p data-zh="一个用纯 HTML5 Canvas + JavaScript 做的充气小游戏，按住充气、松手下降，接星星躲障碍，还能把总分兑换成米皮糖小摊的金币。" data-en="An inflation mini-game built with pure HTML5 Canvas + JavaScript. Hold to inflate, release to descend. Catch stars, dodge obstacles — and redeem your total score for MipiTang coins.">一个用纯 HTML5 Canvas + JavaScript 做的充气小游戏，按住充气、松手下降，接星星躲障碍，还能把总分兑换成米皮糖小摊的金币。</p>
+          <p data-zh="一个用纯 HTML5 Canvas + JavaScript 做的充气小游戏，按住充气、松手下降，接星星躲障碍，轻松解压。" data-en="An inflation mini-game built with pure HTML5 Canvas + JavaScript. Hold to inflate, release to descend. Catch stars and dodge obstacles.">一个用纯 HTML5 Canvas + JavaScript 做的充气小游戏，按住充气、松手下降，接星星躲障碍，轻松解压。</p>
           <span class="visit-hint">
             <span data-zh="访问网站" data-en="Visit Site">访问网站</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
           </span>
         </div>
 
-        <!-- 作品卡片 2 -->
         <div class="card" data-href="https://mipitang-stall.pages.dev" tabindex="0" role="link">
           <h3 data-zh="米皮糖小摊" data-en="MipiTang Stall">米皮糖小摊</h3>
-          <p data-zh="一个用纯 HTML/CSS/JavaScript 做的放置经营小游戏，熬糖浆、擀米皮、卖米皮糖，雇员工、买装饰、离线也有收益，还能和其他小游戏互通金币。虽然还在测试阶段。" data-en="An idle management game built with pure HTML/CSS/JavaScript. Boil syrup, roll dough, sell MipiTang candy. Hire staff, buy decorations, earn offline — and coins link across all my mini-games. Still in testing.">一个用纯 HTML/CSS/JavaScript 做的放置经营小游戏，熬糖浆、擀米皮、卖米皮糖，雇员工、买装饰、离线也有收益，还能和其他小游戏互通金币。虽然还在测试阶段。</p>
+          <p data-zh="一个用纯 HTML/CSS/JavaScript 做的放置经营小游戏，熬糖浆、擀米皮、卖米皮糖，雇员工、买装饰、离线也有收益。" data-en="An idle management game built with pure HTML/CSS/JavaScript. Boil syrup, roll dough, sell MipiTang candy. Hire staff, buy decorations, earn offline.">一个用纯 HTML/CSS/JavaScript 做的放置经营小游戏，熬糖浆、擀米皮、卖米皮糖，雇员工、买装饰、离线也有收益。</p>
           <span class="visit-hint">
             <span data-zh="访问网站" data-en="Visit Site">访问网站</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
           </span>
-          <a href="https://choujitiao-site.pages.dev/mipitang-stall.apk" class="apk-alt" data-apk="mipitang-stall.apk" onclick="event.preventDefault(); event.stopPropagation(); openApkModal(this.getAttribute('data-apk'));" data-zh="📱 也可下载安卓 APK（备用）" data-en="📱 Or download Android APK (backup)">📱 也可下载安卓 APK（备用）</a>
+          <a href="https://choujitiao-site.pages.dev/mipitang-stall.apk" class="apk-alt" data-apk="mipitang-stall.apk" onclick="event.preventDefault(); event.stopPropagation(); openApkModal(this.getAttribute('data-apk'));" data-zh="📱 也可下载安卓 APK" data-en="📱 Or download Android APK">📱 也可下载安卓 APK</a>
         </div>
 
-        <!-- 作品卡片：怀旧版 -->
         <div class="card" data-href="https://mipitang-classic.pages.dev" tabindex="0" role="link">
           <span class="badge" data-zh="怀旧版" data-en="Classic">怀旧版</span>
           <h3 data-zh="米皮糖小摊 · 怀旧版" data-en="MipiTang Stall · Classic Edition">米皮糖小摊 · 怀旧版</h3>
-          <p data-zh="回归最初的味道——初代米皮糖小摊的复古重制。保留最简单的熬糖、擀皮、卖糖三步循环，去掉复杂系统，只留下最纯粹的挂机乐趣。适合想重温初见时光的老玩家。" data-en="Back to the very first taste — a retro remake of the original MipiTang Stall. Keeping only the simple three-step loop: boil syrup, roll dough, sell candy. All the complex systems stripped away, leaving nothing but pure idle fun.">回归最初的味道——初代米皮糖小摊的复古重制。保留最简单的熬糖、擀皮、卖糖三步循环，去掉复杂系统，只留下最纯粹的挂机乐趣。适合想重温初见时光的老玩家。</p>
+          <p data-zh="回归最初的味道——初代米皮糖小摊的复古重制。保留最简单的熬糖、擀皮、卖糖三步循环，去掉复杂系统，只留下最纯粹的挂机乐趣。" data-en="Back to the very first taste — a retro remake of the original MipiTang Stall. Keeping only the simple three-step loop: boil syrup, roll dough, sell candy.">回归最初的味道——初代米皮糖小摊的复古重制。保留最简单的熬糖、擀皮、卖糖三步循环，去掉复杂系统，只留下最纯粹的挂机乐趣。</p>
           <span class="visit-hint">
             <span data-zh="访问网站" data-en="Visit Site">访问网站</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
           </span>
         </div>
 
-        <!-- 作品卡片 3 -->
         <div class="card" data-href="https://big-saucy-chicken-dimension-strike.pages.dev/" tabindex="0" role="link">
           <h3 data-zh="酱味大鸡" data-en="Big Saucy Chicken">酱味大鸡</h3>
-          <p data-zh="一个用纯 HTML5 Canvas + JavaScript 做的竖屏射击小游戏，控制大鸡自动喷射酱汁打敌人，充能满了放“降维打击”清屏，还能把累计总分兑换成米皮糖小摊的金币。" data-en="A portrait shooter built with pure HTML5 Canvas + JavaScript. Your big chicken auto-fires sauce at enemies. Fill the meter to unleash “Dimension Strike” and clear the screen — your all-time score can be redeemed for MipiTang coins.">一个用纯 HTML5 Canvas + JavaScript 做的竖屏射击小游戏，控制大鸡自动喷射酱汁打敌人，充能满了放“降维打击”清屏，还能把累计总分兑换成米皮糖小摊的金币。</p>
+          <p data-zh="一个用纯 HTML5 Canvas + JavaScript 做的竖屏射击小游戏，控制大鸡自动喷射酱汁打敌人，充能满了放“降维打击”清屏。" data-en="A portrait shooter built with pure HTML5 Canvas + JavaScript. Your big chicken auto-fires sauce at enemies. Fill the meter to unleash Dimension Strike.">一个用纯 HTML5 Canvas + JavaScript 做的竖屏射击小游戏，控制大鸡自动喷射酱汁打敌人，充能满了放“降维打击”清屏。</p>
           <span class="visit-hint">
             <span data-zh="访问网站" data-en="Visit Site">访问网站</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
           </span>
         </div>
 
-        <!-- 作品卡片 4 -->
         <div class="card" data-href="https://oxygen-afraid-youre-too-tired.pages.dev/" tabindex="0" role="link">
           <h3 data-zh="氧气 · 怕你太累了" data-en="Oxygen · Afraid You're Too Tired">氧气 · 怕你太累了</h3>
-          <p data-zh="一个用纯 HTML5 Canvas + JavaScript 做的竖版救援小游戏，左右移动氧气球接住下沉的溺水者，漏掉扣血、救到得分，还能把累计拯救数兑换成米皮糖小摊的金币。" data-en="A portrait rescue game built with pure HTML5 Canvas + JavaScript. Move the oxygen orb left and right to catch people sinking below. Missing costs HP, saving scores points — and total rescues can be redeemed for MipiTang coins.">一个用纯 HTML5 Canvas + JavaScript 做的竖版救援小游戏，左右移动氧气球接住下沉的溺水者，漏掉扣血、救到得分，还能把累计拯救数兑换成米皮糖小摊的金币。</p>
+          <p data-zh="一个用纯 HTML5 Canvas + JavaScript 做的竖版救援小游戏，左右移动氧气球接住下沉的溺水者，漏掉扣血、救到得分。" data-en="A portrait rescue game built with pure HTML5 Canvas + JavaScript. Move the oxygen orb left and right to catch people sinking below.">一个用纯 HTML5 Canvas + JavaScript 做的竖版救援小游戏，左右移动氧气球接住下沉的溺水者，漏掉扣血、救到得分。</p>
           <span class="visit-hint">
             <span data-zh="访问网站" data-en="Visit Site">访问网站</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
@@ -633,7 +234,6 @@
       </div>
     </section>
 
-    <!-- 最新日志：由 posts.js 动态渲染 -->
     <section>
       <div class="section-title">
         <span data-zh="📝 最新开发日志" data-en="📝 Latest Dev Posts">📝 最新开发日志</span>
@@ -642,9 +242,8 @@
       <div class="post-list" id="homeLatest"></div>
     </section>
 
-    <!-- AdSense 广告位：审核通过后可在此处插入 <ins class="adsbygoogle"> 代码 -->
+    <!-- AdSense 广告位 -->
 
-    <!-- 版权声明 -->
     <section class="legal-section" style="margin-top:3rem;">
       <h2 data-zh="版权与法律声明" data-en="Copyright &amp; Legal Notice">版权与法律声明</h2>
 
@@ -652,22 +251,19 @@
         <p>版权所有 © 2026 全家桶工作室。保留所有权利。</p>
         <p>本网页游戏作品由全家桶工作室全体成员联合创作，开发过程使用人工智能作为辅助创作、代码起草与修改工具。人工智能不具备著作权主体资格，本作品全部著作权归属于全家桶工作室全体人类创作成员。</p>
         <p>依据《中华人民共和国著作权法》以及美国《美国法典第17编（17 U.S.C.）》版权法案，未经本团队书面许可，任何人不得复制、逆向工程、分发、修改、二次发布本项目代码、美术、文本及全部游戏内容。</p>
-        <p>本项目当前处于小规模内测 Demo 阶段，暂不开源。禁止未经授权扒取源码、盗用素材、仿制本游戏。如存在侵权行为，我方将依法追究相关法律责任。</p>
+        <p>本项目已正式上线，暂不开源。禁止未经授权扒取源码、盗用素材、仿制本游戏。如存在侵权行为，我方将依法追究相关法律责任。</p>
       </div>
 
       <div class="lang-en">
         <p>Copyright © 2026 Bucket Family Studio. All rights reserved.</p>
         <p>This web game is collaboratively created by all members of Bucket Family Studio. Artificial intelligence is deployed solely as an assisting tool for content drafting and code revision during development. AI is not recognized as an author and holds no copyright interest. All copyrights of this work belong to all human creative members of Bucket Family Studio.</p>
         <p>Pursuant to the Copyright Law of the People's Republic of China and Title 17 of the United States Code (17 U.S.C.), no individual may copy, reverse engineer, distribute, modify or republish the source code, artwork, text and all game content of this project without written authorization from our team.</p>
-        <p>This project is a limited internal demo and is NOT open-source at this time. Unauthorized source scraping, asset theft and cloning of this game are strictly prohibited.</p>
+        <p>This project is officially live and NOT open-source at this time. Unauthorized source scraping, asset theft and cloning of this game are strictly prohibited.</p>
       </div>
     </section>
 
   </section>
 
-  <!-- ============================================================ -->
-  <!-- 博客列表：由 posts.js 动态渲染 -->
-  <!-- ============================================================ -->
   <section class="view" id="view-blog">
     <div class="page-head">
       <h1 data-zh="开发日志" data-en="Dev Blog">开发日志</h1>
@@ -676,9 +272,6 @@
     <div class="post-list" id="blogList"></div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- 关于 -->
-  <!-- ============================================================ -->
   <section class="view" id="view-about">
     <div class="page-head">
       <h1 data-zh="关于我们" data-en="About Us">关于我们</h1>
@@ -738,9 +331,6 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- 联系 -->
-  <!-- ============================================================ -->
   <section class="view" id="view-contact">
     <div class="page-head">
       <h1 data-zh="联系我们" data-en="Contact Us">联系我们</h1>
@@ -799,7 +389,6 @@
           </div>
           <button type="submit">用邮件客户端发送</button>
         </form>
-        <p style="font-size:0.82rem;color:#94a3b8;margin-top:0.8rem;">提交后会打开你电脑上的邮件客户端。如果无法打开，请直接发送邮件到上方邮箱地址。</p>
       </div>
 
       <div class="lang-en">
@@ -819,14 +408,10 @@
           </div>
           <button type="submit">Send with your mail client</button>
         </form>
-        <p style="font-size:0.82rem;color:#94a3b8;margin-top:0.8rem;">Submitting opens your local mail client. If it does not open, please email the address above directly.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- 隐私政策 -->
-  <!-- ============================================================ -->
   <section class="view" id="view-privacy">
     <div class="page-head">
       <h1 data-zh="隐私政策" data-en="Privacy Policy">隐私政策</h1>
@@ -836,31 +421,24 @@
     <div class="content-card">
       <div class="lang-zh">
         <p>本隐私政策说明臭鸡条官方网站（国际站）（以下简称“本网站”）如何收集、使用和保护访问者的信息。使用本网站即表示你同意本政策描述的做法。</p>
-
         <h2>1. 我们收集的信息</h2>
         <p>本网站本身不要求注册，也不主动收集姓名、地址等个人身份信息。当你通过邮件联系我们时，我们会收到你主动提供的邮箱地址和邮件内容，这些信息仅用于回复你的问题。</p>
         <p>与大多数网站一样，服务器会自动记录一些技术信息，包括访问时间、浏览器类型、操作系统、来源页面和 IP 地址。这些日志用于分析流量趋势和排查故障，不用于识别个人身份。</p>
-
         <h2>2. Cookie 与类似技术</h2>
         <p>本网站及其嵌入的第三方服务可能使用 Cookie 和类似技术（如本地存储）。Cookie 是存储在浏览器中的小型文本文件，用于记住偏好设置、统计访问情况以及投放广告。</p>
         <p>你可以通过浏览器设置拒绝或删除 Cookie。请注意，禁用 Cookie 可能影响部分功能的正常使用。</p>
-
         <h2>3. 第三方广告（Google AdSense）</h2>
         <p>本网站可能使用 Google AdSense 展示广告。Google 作为第三方广告服务商，会使用 Cookie 在本网站及互联网上的其他网站上向访问者投放广告。</p>
         <p>Google 使用广告 Cookie（包括 DoubleClick DART Cookie），使其能够根据访问者对本网站及其他网站的访问记录投放广告。你可以访问 <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google 广告设置</a> 管理个性化广告偏好，或访问 <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info</a> 了解如何选择退出第三方广告商的 Cookie。</p>
         <p>第三方广告商的隐私政策由其自行制定，本网站无法控制其 Cookie 的使用方式。建议你查阅相关广告商的隐私政策以了解更多信息。</p>
-
         <h2>4. 第三方服务与数据共享</h2>
         <p>本站部分游戏功能会与以下第三方服务交互：</p>
         <ul>
           <li><strong>broadcast.us.ci</strong>：用于全服喇叭广播、官方补偿发放、黑名单与账号状态查询。发送喇叭时会上传你的玩家 ID、昵称和喇叭内容。</li>
           <li><strong>飞书（Feishu）</strong>：通过反馈表单提交问题时，飞书会收集你填写的内容和提交时间。请查阅飞书的隐私政策。</li>
-          <li><strong>跨游戏数据共享</strong>：本站 5 个游戏之间通过浏览器 localStorage 共享金币与积分数据，仅存储在你本机浏览器中，不会上传服务器（除非你主动兑换或发送喇叭）。</li>
         </ul>
-
         <h2>5. 第三方链接</h2>
         <p>本网站包含指向外部游戏页面和第三方网站的链接。这些网站有各自的隐私政策，本网站不对其内容或做法负责。离开本网站时，建议你阅读目标网站的隐私政策。</p>
-
         <h2>6. 我们如何使用信息</h2>
         <ul>
           <li>回复你的邮件和反馈。</li>
@@ -869,50 +447,37 @@
           <li>在获得授权的前提下展示广告。</li>
         </ul>
         <p>我们不会出售、出租或交易你的个人信息。</p>
-
         <h2>7. 数据安全</h2>
         <p>我们采取合理的技术措施保护信息，包括使用 HTTPS 加密传输。但互联网上不存在绝对安全的数据传输方式，我们无法保证信息在任何情况下都绝对安全。</p>
-
         <h2>8. 儿童隐私</h2>
         <p>本网站不面向 13 岁以下的儿童，也不会故意收集儿童的个人信息。如果你是家长或监护人，发现你的孩子向我们提供了个人信息，请联系我们，我们会及时删除。</p>
-
         <h2>9. 你的权利</h2>
         <p>你有权要求查看、更正或删除你通过邮件提供给我们的个人信息。如需行使这些权利，请通过下方邮箱联系我们。</p>
-
         <h2>10. 政策更新</h2>
         <p>我们可能会不时更新本隐私政策。更新后的版本会发布在本页面，并修改页面顶部的“最后更新”日期。建议你定期查看。</p>
-
         <h2>11. 联系我们</h2>
         <p>如果你对本隐私政策有任何疑问，请发送邮件至 <a href="mailto:asdfghjklzxc1116@163.com">asdfghjklzxc1116@163.com</a>。</p>
       </div>
-
       <div class="lang-en">
         <p>This Privacy Policy explains how Chou Ji Tiao Official Website (International) (“this site”) collects, uses and protects visitor information. By using this site, you agree to the practices described here.</p>
-
         <h2>1. Information we collect</h2>
         <p>This site does not require registration and does not actively collect personally identifiable information such as names or addresses. When you contact us by email, we receive the email address and content you voluntarily provide, and use it only to reply to your inquiry.</p>
         <p>Like most websites, our servers automatically log technical information including access time, browser type, operating system, referring page and IP address. These logs are used to analyse traffic trends and troubleshoot issues, not to identify individuals.</p>
-
         <h2>2. Cookies and similar technologies</h2>
         <p>This site and the third-party services embedded in it may use cookies and similar technologies (such as local storage). Cookies are small text files stored in your browser that remember preferences, measure traffic and serve advertising.</p>
         <p>You can refuse or delete cookies through your browser settings. Note that disabling cookies may affect some functionality.</p>
-
         <h2>3. Third-party advertising (Google AdSense)</h2>
         <p>This site may use Google AdSense to display advertisements. Google, as a third-party vendor, uses cookies to serve ads to visitors based on their visit to this site and other sites on the Internet.</p>
         <p>Google uses advertising cookies, including the DoubleClick DART cookie, which enable it to serve ads based on a visitor's prior visits to this site and other websites. You can manage personalised advertising preferences at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>, or learn how to opt out of third-party vendor cookies at <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info</a>.</p>
         <p>Third-party advertisers set their own privacy policies, and this site cannot control how their cookies are used. We recommend reviewing the relevant advertiser's privacy policy for more information.</p>
-
         <h2>4. Third-party services and data sharing</h2>
         <p>Some game features on this site interact with the following third-party services:</p>
         <ul>
           <li><strong>broadcast.us.ci</strong>: used for global horn broadcasts, official coin grants, blacklist and account status checks. Sending a horn uploads your player ID, nickname and message text.</li>
           <li><strong>Feishu</strong>: when submitting the feedback form, Feishu collects the content you enter and the submission time. Please review Feishu's privacy policy.</li>
-          <li><strong>Cross-game data sharing</strong>: the five games on this site share coins and scores through browser localStorage. This data stays in your own browser and is never uploaded unless you redeem or send a horn.</li>
         </ul>
-
         <h2>5. Third-party links</h2>
         <p>This site contains links to external game pages and third-party websites. Those sites have their own privacy policies, and this site is not responsible for their content or practices. When you leave this site, we encourage you to read the destination site's privacy policy.</p>
-
         <h2>6. How we use information</h2>
         <ul>
           <li>Replying to your emails and feedback.</li>
@@ -921,28 +486,20 @@
           <li>Displaying advertising where authorised.</li>
         </ul>
         <p>We do not sell, rent or trade your personal information.</p>
-
         <h2>7. Data security</h2>
         <p>We take reasonable technical measures to protect information, including HTTPS-encrypted transmission. However, no method of transmission over the Internet is absolutely secure, and we cannot guarantee absolute security in all circumstances.</p>
-
         <h2>8. Children's privacy</h2>
         <p>This site is not directed at children under 13 and does not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us and we will delete it promptly.</p>
-
         <h2>9. Your rights</h2>
         <p>You have the right to request access to, correction of, or deletion of personal information you have provided to us by email. To exercise these rights, contact us at the address below.</p>
-
         <h2>10. Changes to this policy</h2>
         <p>We may update this Privacy Policy from time to time. Updated versions will be posted on this page with a revised “Last updated” date. We encourage you to review it periodically.</p>
-
         <h2>11. Contact us</h2>
         <p>If you have any questions about this Privacy Policy, please email <a href="mailto:asdfghjklzxc1116@163.com">asdfghjklzxc1116@163.com</a>.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- 页脚 -->
-  <!-- ============================================================ -->
   <footer class="site-footer">
     <div class="footer-links">
       <a href="#/" data-zh="首页" data-en="Home">首页</a>
@@ -952,12 +509,11 @@
       <a href="#/privacy" data-zh="隐私政策" data-en="Privacy Policy">隐私政策</a>
     </div>
     <p class="footer-note" data-zh="⚡ 持续更新 · 无限进步" data-en="⚡ Always updating · Always improving">⚡ 持续更新 · 无限进步</p>
-    <p class="footer-tiny" data-zh="©2026 全家桶工作室，保留所有权利 | AI 仅作为开发辅助工具，内测 Demo 暂不开源" data-en="©2026 Bucket Family Studio, All rights reserved | AI used only as a dev assistant; internal demo, not open-source">©2026 全家桶工作室，保留所有权利 | AI 仅作为开发辅助工具，内测 Demo 暂不开源</p>
+    <p class="footer-tiny" data-zh="©2026 全家桶工作室，保留所有权利 | AI 仅作为开发辅助工具，暂不开源" data-en="©2026 Bucket Family Studio, All rights reserved | AI used only as a dev assistant; not open-source">©2026 全家桶工作室，保留所有权利 | AI 仅作为开发辅助工具，暂不开源</p>
   </footer>
 
 </div>
 
-<!-- ===== APK 下载确认弹窗 ===== -->
 <div class="apk-modal-mask" id="apkModalMask">
   <div class="apk-modal">
     <h3 data-zh="下载安卓 APK" data-en="Download Android APK">下载安卓 APK</h3>
@@ -970,11 +526,7 @@
 </div>
 
 <script>
-  /* ==========================================================
-     语言状态
-     ========================================================== */
   var LANG = 'zh';
-
   var PAGE_TITLES = {
     'home': ['臭鸡条官方网站（国际站）', 'Chou Ji Tiao Official Website (International)'],
     'blog': ['开发日志 - 臭鸡条', 'Dev Blog - Chou Ji Tiao'],
@@ -983,30 +535,21 @@
     'privacy': ['隐私政策 - 臭鸡条', 'Privacy Policy - Chou Ji Tiao']
   };
 
-  function currentKey() {
-    return location.hash.replace(/^#\/?/, '') || 'home';
-  }
+  function currentKey() { return location.hash.replace(/^#\/?/, '') || 'home'; }
 
-  /* ==========================================================
-     路由
-     ========================================================== */
   function router() {
     var key = currentKey();
     var views = document.querySelectorAll('.view');
     var matched = false;
-
     for (var i = 0; i < views.length; i++) {
       var isMatch = views[i].id === 'view-' + key;
       views[i].classList.toggle('active', isMatch);
       if (isMatch) matched = true;
     }
-
     if (!matched) {
-      var home = document.getElementById('view-home');
-      if (home) home.classList.add('active');
+      document.getElementById('view-home').classList.add('active');
       key = 'home';
     }
-
     updateNav(key);
     updateTitle(key);
     window.scrollTo(0, 0);
@@ -1025,19 +568,14 @@
     document.title = LANG === 'zh' ? pair[0] : pair[1];
   }
 
-  /* ==========================================================
-     语言切换
-     ========================================================== */
   function applyLang() {
     document.documentElement.lang = LANG === 'zh' ? 'zh-CN' : 'en';
     document.body.setAttribute('data-lang', LANG);
-
     var btn = document.getElementById('langBtn');
     if (btn) {
       btn.textContent = LANG === 'zh' ? '🇨🇳' : '🇺🇸';
       btn.title = LANG === 'zh' ? 'Switch to English' : '切换到中文';
     }
-
     var nodes = document.querySelectorAll('[data-zh]');
     for (var i = 0; i < nodes.length; i++) {
       var el = nodes[i];
@@ -1047,13 +585,9 @@
         el.innerHTML = LANG === 'zh' ? zhVal : (enVal || zhVal);
       }
     }
-
     updateTitle(currentKey());
   }
 
-  /* ==========================================================
-     整卡点击跳转
-     ========================================================== */
   function bindCards() {
     var cards = document.querySelectorAll('.card[data-href]');
     for (var c = 0; c < cards.length; c++) {
@@ -1074,52 +608,22 @@
     }
   }
 
-  /* ==========================================================
-     APK 下载弹窗
-     ========================================================== */
   var apkModalMask = document.getElementById('apkModalMask');
-  var apkCancelBtn = document.getElementById('apkCancelBtn');
-  var apkConfirmBtn = document.getElementById('apkConfirmBtn');
   var pendingApkUrl = '';
-
   window.openApkModal = function (url) {
     pendingApkUrl = url || 'mipitang-stall.apk';
     apkModalMask.classList.add('show');
   };
-
-  function closeApkModal() {
-    apkModalMask.classList.remove('show');
-    pendingApkUrl = '';
-  }
-
-  apkCancelBtn.addEventListener('click', closeApkModal);
-
-  apkConfirmBtn.addEventListener('click', function () {
+  document.getElementById('apkCancelBtn').onclick = function() { apkModalMask.classList.remove('show'); pendingApkUrl = ''; };
+  document.getElementById('apkConfirmBtn').onclick = function() {
     if (pendingApkUrl) {
-      var a = document.createElement('a');
-      a.href = pendingApkUrl;
-      a.download = '';
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      var a = document.createElement('a'); a.href = pendingApkUrl; a.download = ''; a.style.display = 'none';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
     }
-    closeApkModal();
-  });
+    apkModalMask.classList.remove('show'); pendingApkUrl = '';
+  };
+  apkModalMask.onclick = function (e) { if (e.target === apkModalMask) { apkModalMask.classList.remove('show'); pendingApkUrl = ''; } };
 
-  apkModalMask.addEventListener('click', function (e) {
-    if (e.target === apkModalMask) closeApkModal();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && apkModalMask.classList.contains('show')) {
-      closeApkModal();
-    }
-  });
-
-  /* ==========================================================
-     联系表单（mailto）
-     ========================================================== */
   function bindContactForm(id) {
     var form = document.getElementById(id);
     if (!form) return;
@@ -1128,129 +632,69 @@
       var name = (form.querySelector('[name="name"]') || {}).value || '';
       var subject = (form.querySelector('[name="subject"]') || {}).value || '';
       var message = (form.querySelector('[name="message"]') || {}).value || '';
-
       var body = message + '\n\n——\n' + (name ? '来自：' + name : '');
-      var mailto = 'mailto:asdfghjklzxc1116@163.com'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(body);
-
-      window.location.href = mailto;
+      window.location.href = 'mailto:asdfghjklzxc1116@163.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     });
   }
 
-  /* ==========================================================
-     启动
-     ========================================================== */
-  document.getElementById('langBtn').addEventListener('click', function () {
-    LANG = LANG === 'zh' ? 'en' : 'zh';
-    applyLang();
-  });
-
+  document.getElementById('langBtn').onclick = function () { LANG = LANG === 'zh' ? 'en' : 'zh'; applyLang(); };
   window.addEventListener('hashchange', router);
-
   bindCards();
   bindContactForm('contactForm');
   bindContactForm('contactFormEn');
-
   router();
   applyLang();
 </script>
 
-<!-- ============================================================
-     文章数据 + 动态渲染
-     posts.js 承载全部文章数据，index.html 不再硬编码任何文章
-     ============================================================ -->
 <script src="posts.js"></script>
 <script>
 (function () {
   var POSTS = (window.EXTRA_POSTS || []).slice();
   if (!POSTS.length) return;
 
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
-  // 按日期倒序
-  POSTS.sort(function (a, b) {
-    return String(b.date).localeCompare(String(a.date));
-  });
+  POSTS.sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
 
   var container = document.querySelector('.container');
   var footer = document.querySelector('.site-footer');
 
-  // 1. 为每篇文章生成独立视图 view-post-<slug>
   POSTS.forEach(function (p) {
     if (!p || !p.slug) return;
-
     var art = document.createElement('article');
     art.className = 'view';
     art.id = 'view-post-' + p.slug;
-    art.innerHTML =
-      '<div class="article">' +
-        '<a href="#/blog" class="back-link" data-zh="← 返回开发日志" data-en="← Back to blog">← 返回开发日志</a>' +
-        '<div class="lang-zh">' + (p.bodyZh || '') + '</div>' +
-        '<div class="lang-en">' + (p.bodyEn || p.bodyZh || '') + '</div>' +
-      '</div>';
-
-    if (footer) container.insertBefore(art, footer);
-    else container.appendChild(art);
-
-    // 注册标题，供 updateTitle 使用
-    PAGE_TITLES['post-' + p.slug] = [
-      (p.titleZh || p.slug) + ' - 臭鸡条',
-      (p.titleEn || p.titleZh || p.slug) + ' - Chou Ji Tiao'
-    ];
+    art.innerHTML = '<div class="article"><a href="#/blog" class="back-link" data-zh="← 返回开发日志" data-en="← Back to blog">← 返回开发日志</a><div class="lang-zh">' + (p.bodyZh || '') + '</div><div class="lang-en">' + (p.bodyEn || p.bodyZh || '') + '</div></div>';
+    container.insertBefore(art, footer);
+    PAGE_TITLES['post-' + p.slug] = [(p.titleZh || p.slug) + ' - 臭鸡条', (p.titleEn || p.titleZh || p.slug) + ' - Chou Ji Tiao'];
   });
 
-  // 2. 渲染博客列表页
   var blogList = document.getElementById('blogList');
   if (blogList) {
     blogList.innerHTML = '';
     POSTS.forEach(function (p) {
-      var a = document.createElement('a');
-      a.className = 'post-item';
-      a.href = '#/post-' + p.slug;
-
-      var metaZh = p.date + ' · ' + (p.tagZh || '');
-      var metaEn = p.date + ' · ' + (p.tagEn || p.tagZh || '');
-      if (p.readZh) metaZh += ' · ' + p.readZh;
-      if (p.readEn) metaEn += ' · ' + p.readEn;
-
-      a.innerHTML =
-        '<div class="meta" data-zh="' + esc(metaZh) + '" data-en="' + esc(metaEn) + '">' + esc(metaZh) + '</div>' +
-        '<h3 data-zh="' + esc(p.titleZh) + '" data-en="' + esc(p.titleEn || p.titleZh) + '">' + esc(p.titleZh) + '</h3>' +
-        '<p data-zh="' + esc(p.excerptZh) + '" data-en="' + esc(p.excerptEn || p.excerptZh) + '">' + esc(p.excerptZh) + '</p>';
+      var a = document.createElement('a'); a.className = 'post-item'; a.href = '#/post-' + p.slug;
+      var metaZh = p.date + ' · ' + (p.tagZh || '') + (p.readZh ? ' · ' + p.readZh : '');
+      var metaEn = p.date + ' · ' + (p.tagEn || p.tagZh || '') + (p.readEn ? ' · ' + p.readEn : '');
+      a.innerHTML = '<div class="meta" data-zh="' + esc(metaZh) + '" data-en="' + esc(metaEn) + '">' + esc(metaZh) + '</div><h3 data-zh="' + esc(p.titleZh) + '" data-en="' + esc(p.titleEn || p.titleZh) + '">' + esc(p.titleZh) + '</h3><p data-zh="' + esc(p.excerptZh) + '" data-en="' + esc(p.excerptEn || p.excerptZh) + '">' + esc(p.excerptZh) + '</p>';
       blogList.appendChild(a);
     });
   }
 
-  // 3. 渲染首页最新 3 篇
   var homeLatest = document.getElementById('homeLatest');
   if (homeLatest) {
     homeLatest.innerHTML = '';
     POSTS.slice(0, 3).forEach(function (p) {
-      var a = document.createElement('a');
-      a.className = 'post-item';
-      a.href = '#/post-' + p.slug;
-
+      var a = document.createElement('a'); a.className = 'post-item'; a.href = '#/post-' + p.slug;
       var metaZh = p.date + ' · ' + (p.tagZh || '');
       var metaEn = p.date + ' · ' + (p.tagEn || p.tagZh || '');
-
-      a.innerHTML =
-        '<div class="meta" data-zh="' + esc(metaZh) + '" data-en="' + esc(metaEn) + '">' + esc(metaZh) + '</div>' +
-        '<h3 data-zh="' + esc(p.titleZh) + '" data-en="' + esc(p.titleEn || p.titleZh) + '">' + esc(p.titleZh) + '</h3>' +
-        '<p data-zh="' + esc(p.excerptZh) + '" data-en="' + esc(p.excerptEn || p.excerptZh) + '">' + esc(p.excerptZh) + '</p>';
+      a.innerHTML = '<div class="meta" data-zh="' + esc(metaZh) + '" data-en="' + esc(metaEn) + '">' + esc(metaZh) + '</div><h3 data-zh="' + esc(p.titleZh) + '" data-en="' + esc(p.titleEn || p.titleZh) + '">' + esc(p.titleZh) + '</h3><p data-zh="' + esc(p.excerptZh) + '" data-en="' + esc(p.excerptEn || p.excerptZh) + '">' + esc(p.excerptZh) + '</p>';
       homeLatest.appendChild(a);
     });
   }
 
-  // 4. 重新应用语言 + 重新路由（防止直接访问 #/post-xxx 时错过）
   if (typeof applyLang === 'function') applyLang();
-  if (location.hash.indexOf('#/post-') === 0 && typeof router === 'function') {
-    router();
-  }
+  if (location.hash.indexOf('#/post-') === 0 && typeof router === 'function') router();
 })();
 </script>
 
