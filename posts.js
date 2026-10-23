@@ -4,20 +4,6 @@
 
 window.EXTRA_POSTS = [
   {
-    "slug": "canvas-game",
-    "date": "2026-10-23",
-    "tagZh": "技术",
-    "tagEn": "Engineering",
-    "readZh": "约 4 分钟",
-    "readEn": "4 min",
-    "titleZh": "用纯 HTML5 Canvas 从零做一个充气小游戏",
-    "titleEn": "Make an inflatable mini-game from scratch with pure HTML5 Canvas",
-    "excerptZh": "「蛋仔鸭鸭气球」是我做的第一个网页小游戏。玩法很简单：按住屏幕充气上升，松手下降，在空中接星星、躲障碍。整个游戏没有用任何游戏引擎，只有一张 Canvas 和几...",
-    "excerptEn": "\"Egg Duck Duck Balloon\" was the first web mini-game I made.The gameplay is simpl...",
-    "bodyZh": "<h1>用纯 HTML5 Canvas 从零做一个充气小游戏</h1><p class=\"article-meta\">2026-10-23 · 技术 · 约 4 分钟</p><p>「蛋仔鸭鸭气球」是我做的第一个网页小游戏。玩法很简单：按住屏幕充气上升，松手下降，在空中接星星、躲障碍。整个游戏没有用任何游戏引擎，只有一张 Canvas 和几百行原生 JavaScript。这篇文章记录一下从零到上线的过程，以及踩过的几个坑。</p><h2>为什么不用游戏引擎</h2><p>很多人问，为什么不用 Phaser、PixiJS 或者 Cocos？原因很实际： AI辅助不方便。</p><h2>游戏循环</h2><p>所有 Canvas 游戏的核心都是一个循环：</p><pre><code>function loop(t) {\n  var dt = Math.min(t - last, 50) / 1000;\n  last = t;\n  update(dt);\n  render();\n  requestAnimationFrame(loop);\n}</code></pre><p><code>dt</code> 是两帧之间的时间差，用它来驱动位移，游戏在 60Hz 和 120Hz 屏幕上速度就一致。<code>Math.min(..., 50)</code> 是为了防止用户切到别的标签页再切回来时，<code>dt</code> 变成几秒，角色瞬间飞出屏幕。</p><h2>充气与下降</h2><p>按住时，气球获得向上的加速度；松手后，重力把它拉回来：</p><pre><code>var accel = -gravity;\nif (pressing) accel += thrust;\nvy += accel * dt;\nvy = Math.max(vy, -maxUp);\nvy = Math.min(vy, maxDown);\ny += vy * dt;</code></pre><p>这个模型很简单，但手感的关键在于参数：<code>thrust</code> 太大，气球会像火箭；太小，按半天升不上去。我调了两天才找到一组“有点笨重但可控”的数值，这大概就是小游戏最花时间的地方。</p><h2>碰撞检测</h2><p>星星和障碍物都是圆形，判定用最朴素的圆心距离：</p><pre><code>function hit(a, b) {\n  var dx = a.x - b.x, dy = a.y - b.y;\n  var r = a.r + b.r;\n  return dx * dx + dy * dy &lt; r * r;\n}</code></pre><p>用平方比较，省掉 <code>Math.sqrt</code>。一帧里只有几十个对象，这个开销可以忽略，但养成习惯没坏处。</p><h2>分数与金币兑换</h2><p>游戏结束时，本局得分会累加进 <code>localStorage</code>。米皮糖小摊会读取这个值，按一定比例兑换成金币。这样每个小游戏都能给主游戏带来一点“回流”，也让玩家的时间有了跨游戏的沉淀。</p><h2>踩过的坑</h2><ul><li><strong>移动端 100vh 问题</strong>：地址栏收起时 <code>100vh</code> 会跳变。最后用 <code>window.innerHeight</code> 动态设置 Canvas 高度。</li><li><strong>触摸事件穿透</strong>：在 Canvas 上监听 <code>touchstart</code> 时要 <code>preventDefault()</code>，否则会触发页面滚动。</li><li><strong>高分屏模糊</strong>：Canvas 的 CSS 尺寸和绘制尺寸要分开设置，按 <code>devicePixelRatio</code> 放大绘制缓冲。</li></ul><p>这些小问题单独看都不难，但凑在一起，就是“能不能玩”和“玩起来舒不舒服”的区别。</p><p><br></p>",
-    "bodyEn": "<h1>Make an inflatable mini-game from scratch with pure HTML5 Canvas</h1><p class=\"article-meta\">2026-10-23 · Engineering · 4 min</p><p>\"Egg Duck Duck Balloon\" was the first web mini-game I made.The gameplay is simple: press and hold the screen to inflate and rise, release and descend, catch the stars in the air, and avoid obstacles.The entire game does not use any game engine, just a Canvas and a few hundred lines of native JavaScript.This article takes a look at the process of going online from scratch and how many pits you've stepped in.Why don't game engines? Many people ask, why not Phaser, PixiJS or Cocos?The reason is practical: AI assistance is inconvenient.Game loop At the heart of all Canvas games is a loop: function loop (t) {\n  var dt = Math.min (t-last, 50)/1000;\n  last = t;\n  update (dt);\n  render ();\n  requestAnimationFrame (loop);\n}dt is the time difference between two frames, which is used to drive the displacement, and the game speed is consistent on the 60Hz and 120Hz screens.Math.min (..., 50) is to prevent the user from cutting to another tab and back again, dt becomes a few seconds, and the character instantly flies out of the screen.When inflation and descent are pressed, the balloon gains upward acceleration; after release, gravity pulls it back: var accel = -gravity;\nif (pre</p>"
-  },
-  {
     "slug": "idle-design",
     "date": "2026-10-23",
     "tagZh": "设计",
