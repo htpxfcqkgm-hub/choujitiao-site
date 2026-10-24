@@ -655,8 +655,10 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
   POSTS.sort(function(a, b) {
-  var timeA = new Date(a.date).getTime() || 0;
-  var timeB = new Date(b.date).getTime() || 0;
+  var dateA = String(a.date || '').replace(/-/g, '/');
+  var dateB = String(b.date || '').replace(/-/g, '/');
+  var timeA = new Date(dateA).getTime() || 0;
+  var timeB = new Date(dateB).getTime() || 0;
   return timeB - timeA;
 });
 
