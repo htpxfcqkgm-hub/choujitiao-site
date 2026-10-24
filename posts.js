@@ -89,7 +89,7 @@ window.EXTRA_POSTS = [
   },
   {
     "slug": "post-mvlgya19",
-    "date": "2026-10-23",
+    "date": "2026-10-24",
     "tagZh": "发布",
     "tagEn": "Shipping",
     "readZh": "约 1 分钟",
@@ -98,7 +98,7 @@ window.EXTRA_POSTS = [
     "titleEn": "Released Rice Skin Sugar v1.0",
     "excerptZh": "两周时间我们做了无数次的渗透测试，终于搞出了一个几乎没有作弊的版本 虽然做了一些取舍（下线互联互通），但是我们通过调查发现玩家间基本不用这个功能...",
     "excerptEn": "For two weeks, we did countless penetration tests, and finally came up with a ve...",
-    "bodyZh": "<h1>发布米皮糖v1.0</h1><p class=\"article-meta\">2026-10-23 · 发布 · 约 1 分钟</p>两周时间我们做了无数次的渗透测试，终于搞出了一个几乎没有作弊的版本 虽然做了一些取舍（下线互联互通），但是我们通过调查发现玩家间基本不用这个功能",
-    "bodyEn": "<h1>Released Rice Skin Sugar v1.0</h1><p class=\"article-meta\">2026-10-23 · Shipping · 1 min</p><p>For two weeks, we did countless penetration tests, and finally came up with a version with almost no cheating. Although we made some trade-offs (offline interoperability), we found that this function is basically not used between players through investigation.</p>"
+    "bodyZh": "<h1>发布米皮糖v1.0</h1><p class=\"article-meta\">2026-10-24 · 发布 · 约 1 分钟</p>两周时间我们做了无数次的渗透测试，终于搞出了一个几乎没有作弊的版本 虽然做了一些取舍（下线互联互通），但是我们通过调查发现玩家间基本不用这个功能",
+    "bodyEn": "<h1>Released Rice Skin Sugar v1.0</h1><p class=\"article-meta\">2026-10-24 · Shipping · 1 min</p><p>For two weeks, we did countless penetration tests, and finally came up with a version with almost no cheating. Although we made some trade-offs (offline interoperability), we found that this function is basically not used between players through investigation.</p>"
   }
 ];
