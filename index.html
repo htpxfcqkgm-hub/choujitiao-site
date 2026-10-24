@@ -654,7 +654,11 @@
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
-  POSTS.sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+  POSTS.sort(function(a, b) {
+  var timeA = new Date(a.date).getTime() || 0;
+  var timeB = new Date(b.date).getTime() || 0;
+  return timeB - timeA;
+});
 
   var container = document.querySelector('.container');
   var footer = document.querySelector('.site-footer');
